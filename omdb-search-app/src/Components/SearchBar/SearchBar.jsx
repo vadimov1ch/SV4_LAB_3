@@ -9,6 +9,10 @@ class SearchBar extends React.Component {
     this.props.onFormSubmit(this.state.term);
   };
 
+  onInputClear = () => {
+    this.setState({ term: '' });
+  };
+
   render() {
     return (
       <div className="search-bar">
@@ -21,6 +25,11 @@ class SearchBar extends React.Component {
             className="search-input"
             autoComplete="off"
           />
+          {this.state.term && (
+            <button type="button" onClick={this.onInputClear} className="clear-button">
+              &times;
+            </button>
+          )}
         </form>
       </div>
     );
